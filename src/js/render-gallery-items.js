@@ -1,10 +1,21 @@
 import refs from "./refs"
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+    overlayOpacity: 0.8,
+
+});
+
 export default function renderGalleryItems(items) {
-    refs.gallery.innerHTML = items.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
+    console.log(items);
+    const markup = items.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
-             <a href="${largeImageURL}">
-             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-             </a>
+            <a href="${largeImageURL}">
+                <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+            </a>
             <div class="info">
                 <p class="info-item">
                     <b>Likes</b>
@@ -26,5 +37,6 @@ export default function renderGalleryItems(items) {
             </div>`
     })
         .join('')
-    
+    refs.gallery.insertAdjacentHTML('beforeend', markup);
+    lightbox.refresh();
 }
