@@ -1,0 +1,42 @@
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+}
+body {
+    font-family: 'Acme', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgb(0, 72, 78);
+    background: url(../images/bg.png) 50% 0 no-repeat rgb(251 228 118);;
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+    
+}

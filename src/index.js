@@ -1,3 +1,5 @@
+// import "./css/common.css";
+// import "./css/styles.css";
 import refs from "./js/refs";
 import PixabayApiService from "./js/fetch-url";
 import renderGalleryItems from "./js/render-gallery-items";
