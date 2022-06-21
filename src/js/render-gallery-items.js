@@ -10,7 +10,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 export default function renderGalleryItems(data) {
-    console.log(data);
     const markup = data.hits.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
             <a href="${largeImageURL}">

@@ -21,12 +21,14 @@ async function onSearch(e) {
       clearMarkup();
       return;
   }
-
   clearMarkup();
 
   const page = await newsApiService.resetPage();
   const promiseRes = await newsApiService.fetchImages();
 
+ if (newsApiService.page === 1 && promiseRes.totalHits > 0) {
+    Notify.success(`Hooray! We found ${promiseRes.totalHits} images.`);
+  }
   receivedData(promiseRes,page)
 }
 
@@ -38,12 +40,8 @@ async function onLoadMore() {
 }
 
 async function receivedData(data) {
+  const { hits} = await newsApiService.fetchImages();
 
-  const { hits, totalHits } = await newsApiService.fetchImages();
-  
-  if (newsApiService.page === 1) {
-    Notify.success(`Hooray! We found ${totalHits} images.`);
-  }
   if (hits.length === 0) {
         Report.failure(
         'Found nothing for you.',
@@ -57,11 +55,9 @@ async function receivedData(data) {
     Notify.warning(
       "We're sorry, but you've reached the end of search results."
     );
-    return;
   }
 
-  return renderGalleryItems(data);
-  
+  renderGalleryItems(data);
 }
 
 function clearMarkup() {
