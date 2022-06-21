@@ -9,9 +9,9 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 });
 
-export default function renderGalleryItems(items) {
-    console.log(items);
-    const markup = items.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
+export default function renderGalleryItems(data) {
+    console.log(data);
+    const markup = data.hits.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
             <a href="${largeImageURL}">
                 <img src="${webformatURL}" alt="${tags}" loading="lazy" />

@@ -30,7 +30,28 @@ async function onSearch(e) {
   const page = await newsApiService.resetPage();
   const promiseRes = await newsApiService.fetchImages();
 
-  if (promiseRes.length === 0) {
+  receivedData(promiseRes,page)
+}
+
+async function onLoadMore() {
+  const page = await newsApiService.nextPage();
+  const promiseRes = await newsApiService.fetchImages();
+  // if (promiseRes.length < 40) {
+  //       Notify.warning('We`re sorry, but you`ve reached the end of search results.');
+  //   return;
+  // }
+  // renderGalleryItems(promiseRes, page)
+  receivedData(promiseRes,page)
+}
+
+async function receivedData(data) {
+
+  const { hits, totalHits } = await newsApiService.fetchImages();
+  
+  if (newsApiService.page === 1) {
+    Notify.success(`Hooray! We found ${totalHits} images.`);
+  }
+  if (hits.length === 0) {
         Report.failure(
         'Found nothing for you.',
         'Please keep the correct request.',
@@ -38,13 +59,16 @@ async function onSearch(e) {
       );
     return;
   }
-  renderGalleryItems(promiseRes, page);
-}
+  if (hits.length < 40) {
+    refs.btnLoadMore.style.display = 'none';
+    Notify.warning(
+      "We're sorry, but you've reached the end of search results."
+    );
+    return;
+  }
 
-async function onLoadMore() {
-  const page = await newsApiService.nextPage();
-  const promiseRes = await newsApiService.fetchImages();
-  renderGalleryItems(promiseRes, page)
+  return renderGalleryItems(data);
+  
 }
 
 function clearMarkup() {
