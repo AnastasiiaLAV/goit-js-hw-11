@@ -6,9 +6,6 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const newsApiService = new PixabayApiService();
 
-let totalPages;
-let search;
-
 refs.form.addEventListener("submit", onSearch);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
 
@@ -36,11 +33,7 @@ async function onSearch(e) {
 async function onLoadMore() {
   const page = await newsApiService.nextPage();
   const promiseRes = await newsApiService.fetchImages();
-  // if (promiseRes.length < 40) {
-  //       Notify.warning('We`re sorry, but you`ve reached the end of search results.');
-  //   return;
-  // }
-  // renderGalleryItems(promiseRes, page)
+
   receivedData(promiseRes,page)
 }
 
