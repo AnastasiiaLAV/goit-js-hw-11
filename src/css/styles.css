@@ -24,8 +24,6 @@ input {
     font-size: 20px;
     color: rgb(0 125 136);
     padding-left: 10px;
-
-    
 }
 
 input::placeholder {
@@ -56,7 +54,6 @@ input:focus {
 
 .photo-card{
     width: 290px;
-    /* border: 1px solid rgb(65 152 158); */
     display: inline-block;
     flex-basis: calc(100% / 4 - 20px);
     margin-top: 20px;
@@ -65,6 +62,7 @@ input:focus {
     overflow: hidden;
     padding: 5px;
 }
+
 .photo-card img{
     display: block;
     width: 100%;
@@ -72,8 +70,8 @@ input:focus {
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 10px 0px,
             rgba(0, 0, 0, 0.5) 0px 2px 15px 0px;
-filter: grayscale(40%);
-cursor: pointer;
+    filter: grayscale(40%);
+    cursor: pointer;
 }
 
 .gallery img:hover {
@@ -111,37 +109,6 @@ cursor: pointer;
     color: rgb(0 125 136);
 }
 
-.load-more:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    left: 0;
-    direction: rtl;
-    z-index: -1;
-    box-shadow:
-        -7px -7px 20px 0px #fff9,
-        -4px -4px 5px 0px #fff9,
-        7px 7px 20px 0px #0002,
-        4px 4px 5px 0px #0001;
-    transition: all 0.3s ease;
-}
-
-.load-more:hover {
-    color: rgb(0, 75, 82);
-}
-
-.load-more:hover:after {
-    left: auto;
-    right: 0;
-    width: 100%;
-}
-
-.load-more:active {
-    top: 9px;
-}
-
 .search {
     position: relative;
     right: 20px;
@@ -153,6 +120,7 @@ cursor: pointer;
     line-height: 42px;
     -webkit-perspective: 230px;
     perspective: 230px;
+    margin: 20px 20px 20px 10px;
 }
 
 .search span {
@@ -215,4 +183,44 @@ box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
     -webkit-transform: rotateX(-90deg);
     -moz-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
+}
+
+.load-more{
+    display: block;
+    margin: 0 auto;
+}
+
+.load-more:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+        -7px -7px 20px 0px #fff9,
+        -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+}
+
+.load-more:hover {
+    color: rgb(0, 75, 82);
+}
+
+.load-more:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.load-more:active {
+    top: 9px;
+}
+
+.load-more:disabled {
+    display: none;
 }

@@ -6,7 +6,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
     overlayOpacity: 0.8,
-
 });
 
 export default function renderGalleryItems(data) {

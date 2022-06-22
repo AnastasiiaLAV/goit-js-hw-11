@@ -1,5 +1,3 @@
-// import "./css/common.css";
-// import "./css/styles.css";
 import refs from "./js/refs";
 import PixabayApiService from "./js/fetch-url";
 import renderGalleryItems from "./js/render-gallery-items";
@@ -10,6 +8,7 @@ const newsApiService = new PixabayApiService();
 
 refs.form.addEventListener("submit", onSearch);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
+refs.btnLoadMore.disabled = true;
 
 async function onSearch(e) {
   e.preventDefault();
@@ -29,9 +28,10 @@ async function onSearch(e) {
   const promiseRes = await newsApiService.fetchImages();
 
  if (newsApiService.page === 1 && promiseRes.totalHits > 0) {
-    Notify.success(`Hooray! We found ${promiseRes.totalHits} images.`);
+   refs.btnLoadMore.disabled = false;
+   Notify.success(`Hooray! We found ${promiseRes.totalHits} images.`);
   }
-  receivedData(promiseRes,page)
+  receivedData(promiseRes, page);
 }
 
 async function onLoadMore() {
@@ -53,12 +53,11 @@ async function receivedData(data) {
     return;
   }
   if (hits.length < 40) {
-    refs.btnLoadMore.style.display = 'none';
+    refs.btnLoadMore.disabled = true;
     Notify.warning(
       "We're sorry, but you've reached the end of search results."
     );
   }
-
   renderGalleryItems(data);
 }
 
@@ -66,8 +65,9 @@ function clearMarkup() {
   refs.gallery.innerHTML = '';
 }
 
+
 let style = document.createElement('STYLE');
 style.type = 'text/css';
 style.innerHTML =
-    '.sl-overlay {background: linear-gradient(160deg, black, transparent)} .sl-caption {font-family: Lobster, cursive}';
+    '.sl-overlay {background: linear-gradient(160deg, rgb(252 210 43), rgb(1 170 185))} .sl-caption {background: rgba(0, 72, 78, 0.5)} .sl-caption {font-family: Lobster, cursive}';
 document.querySelector('body').append(style);

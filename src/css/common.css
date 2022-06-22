@@ -28,6 +28,7 @@ img {
     width: 100%;
     max-width: 100%;
 }
+
 body {
     font-family: 'Acme', sans-serif;
     font-size: 18px;
@@ -35,8 +36,6 @@ body {
     color: rgb(0, 72, 78);
     background: url(../images/bg.png) 50% 0 no-repeat rgb(251 228 118);;
     background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-
-    
+    background-position: center;
+    background-size: cover;
 }
