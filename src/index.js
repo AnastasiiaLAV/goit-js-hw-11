@@ -42,6 +42,7 @@ async function onLoadMore() {
 }
 
 async function receivedData(data) {
+  refs.btnLoadMore.disabled = true;
   const { hits} = await newsApiService.fetchImages();
 
   if (hits.length === 0) {
@@ -59,6 +60,7 @@ async function receivedData(data) {
     );
   }
   renderGalleryItems(data);
+  refs.btnLoadMore.disabled = false;
 }
 
 function clearMarkup() {
