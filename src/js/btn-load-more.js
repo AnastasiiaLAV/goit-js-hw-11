@@ -32,6 +32,5 @@ export default class LoadMoreBtn {
 
   hide() {
       this.refs.button.classList.add('is-hidden');
-    //   this.refs.spinner.classList.add('is-hidden')
   }
 }

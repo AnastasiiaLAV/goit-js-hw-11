@@ -8,8 +8,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
     overlayOpacity: 0.8,
 });
 
-export default function renderGalleryItems(data) {
-    const markup = data.hits.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
+export default function renderGalleryItems({hits}) {
+    const markup = hits.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
             <a href="${largeImageURL}">
                 <img src="${webformatURL}" alt="${tags}" loading="lazy" />
