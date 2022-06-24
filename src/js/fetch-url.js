@@ -22,7 +22,7 @@ export default class PixabayApiService {
     console.log(this);
     try {
       const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.query}&page=${this.page}&per_page=40&image_type=photo&orientation=horizontal&safesearch=true`);
-      // this.nextPage;
+      this.nextPage;
 console.log(response);
       return response.data;
     }
