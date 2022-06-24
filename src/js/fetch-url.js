@@ -15,14 +15,13 @@ export default class PixabayApiService {
 
   constructor() {
     this.search = '';
-    this.page = 1;
+    this.page = 0;
   }
 
   async fetchImages() {
     try {
       const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.query}&page=${this.page}&per_page=40&image_type=photo&orientation=horizontal&safesearch=true`);
-      this.nextPage;
-      return response.data;
+    return response.data;
     }
     catch (error) {
       console.error(error);

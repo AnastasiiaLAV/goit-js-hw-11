@@ -63,8 +63,10 @@ async function fetchData() {
    Notify.success(`Hooray! We found ${totalHits} images.`);
   }
 
+  newsApiService.nextPage();
+  
   renderGalleryItems({hits});
-
+  
   loadMoreBtn.enable();
 }
 
