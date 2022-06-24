@@ -42,8 +42,6 @@ function onSearch(e) {
 async function fetchData() {
   loadMoreBtn.disable();
 
-  newsApiService.nextPage();
-
   const { hits, totalHits } = await newsApiService.fetchImages();
   
   if (hits.length === 0) {
